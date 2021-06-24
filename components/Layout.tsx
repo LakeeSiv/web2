@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import ThemePicker from "./Theme/ThemePicker";
 
 interface PropTypes {
   title: string;
@@ -17,6 +18,7 @@ const Layout: React.FC<PropTypes> = ({ title, children }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ThemePicker></ThemePicker>
       {children}
     </div>
   );
