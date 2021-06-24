@@ -6,9 +6,10 @@ import ThemePicker from "./Theme/ThemePicker";
 interface PropTypes {
   title: string;
   children?: React.ReactChild;
+  active_page: string;
 }
 
-const Layout: React.FC<PropTypes> = ({ title, children }) => {
+const Layout: React.FC<PropTypes> = ({ title, children, active_page }) => {
   return (
     <div>
       <Head>
@@ -19,7 +20,7 @@ const Layout: React.FC<PropTypes> = ({ title, children }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar></NavBar>
+      <NavBar active_page={active_page}></NavBar>
       {children}
     </div>
   );
