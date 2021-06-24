@@ -37,6 +37,7 @@ const NavLink: React.FC<NavLinkProps> = ({ children, link, active }) => {
         bg: active ? activeColor : bgColor,
       }}
       href={"/" + link.toLowerCase()}
+      // @ts-ignore
       bg={active ? activeColor : null}
     >
       {children}
