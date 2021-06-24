@@ -20,24 +20,33 @@ const Links = ["Home", "About", "Projects", "Contact"];
 interface NavLinkProps {
   children: ReactNode;
   link: string;
+  active?: boolean;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ children, link }) => (
-  <Link
-    px={3}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"/" + link.toLowerCase()}
-  >
-    {children}
-  </Link>
-);
+const NavLink: React.FC<NavLinkProps> = ({ children, link, active }) => {
+  const bgColor = useColorModeValue("gray.200", "gray.700");
+  const activeColor = useColorModeValue("red.100", "red.800");
 
-export default function Simple() {
+  return (
+    <Link
+      px={3}
+      py={1}
+      rounded={"md"}
+      _hover={{
+        textDecoration: "none",
+        bg: active ? activeColor : bgColor,
+      }}
+      href={"/" + link.toLowerCase()}
+      bg={active ? activeColor : null}
+    >
+      {children}
+    </Link>
+  );
+};
+interface NavBarProps {
+  active_page: string;
+}
+const NavBar: React.FC<NavBarProps> = ({ active_page }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -63,7 +72,11 @@ export default function Simple() {
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
-                <NavLink key={link} link={link}>
+                <NavLink
+                  key={link}
+                  link={link}
+                  active={active_page === link ? true : false}
+                >
                   {link}
                 </NavLink>
               ))}
@@ -80,7 +93,11 @@ export default function Simple() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link} link={link}>
+                <NavLink
+                  key={link}
+                  link={link}
+                  active={active_page === link ? true : false}
+                >
                   {link}
                 </NavLink>
               ))}
@@ -90,4 +107,6 @@ export default function Simple() {
       </Box>
     </>
   );
-}
+};
+
+export default NavBar;
