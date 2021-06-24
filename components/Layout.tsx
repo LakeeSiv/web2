@@ -3,9 +3,10 @@ import React from "react";
 
 interface PropTypes {
   title: string;
+  children?: React.ReactChild;
 }
 
-const Layout: React.FC<PropTypes> = ({ title }) => {
+const Layout: React.FC<PropTypes> = ({ title, children }) => {
   return (
     <div>
       <Head>
@@ -16,6 +17,7 @@ const Layout: React.FC<PropTypes> = ({ title }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {children}
     </div>
   );
 };
