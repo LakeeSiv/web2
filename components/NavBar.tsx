@@ -42,7 +42,11 @@ export default function Simple() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.800")} px={4}>
+      <Box
+        bg={useColorModeValue("gray.100", "rgba(19, 23, 32, 0.7)")}
+        back
+        px={4}
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -50,6 +54,7 @@ export default function Simple() {
             aria-label={"Open Menu"}
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
+            rounded="md"
           />
           <HStack spacing={8} alignItems={"center"}>
             <HStack
