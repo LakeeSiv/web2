@@ -17,16 +17,21 @@ import ThemePicker from "./Theme/ThemePicker";
 
 const Links = ["Home", "About", "Projects", "Contact"];
 
-const NavLink = ({ children }: { children: ReactNode }) => (
+interface NavLinkProps {
+  children: ReactNode;
+  link: string;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ children, link }) => (
   <Link
-    px={2}
+    px={3}
     py={1}
     rounded={"md"}
     _hover={{
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700"),
     }}
-    href={"#"}
+    href={"/" + link.toLowerCase()}
   >
     {children}
   </Link>
@@ -53,7 +58,9 @@ export default function Simple() {
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link} link={link}>
+                  {link}
+                </NavLink>
               ))}
             </HStack>
           </HStack>
@@ -68,7 +75,9 @@ export default function Simple() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link} link={link}>
+                  {link}
+                </NavLink>
               ))}
             </Stack>
           </Box>
