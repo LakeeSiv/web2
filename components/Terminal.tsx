@@ -6,8 +6,10 @@ const Terminal: React.FC = () => {
     <div>
       <VStack>
         <Heading>Hi</Heading>
+        <Box width="80vw" bgColor="red.100" border="1px" borderRadius="md">
+          sfhdaof
+        </Box>
       </VStack>
-      <Box width="50vw" bg="red.100"></Box>
     </div>
   );
 };
