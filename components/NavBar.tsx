@@ -11,6 +11,7 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  LinkOverlay,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ThemePicker from "./Theme/ThemePicker";
@@ -26,6 +27,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ children, link, active }) => {
   const bgColor = useColorModeValue("gray.200", "gray.700");
   const activeColor = useColorModeValue("red.100", "red.800");
+  const url = link === "Home" ? "/" : "/" + link.toLowerCase();
 
   return (
     <Link
@@ -36,7 +38,7 @@ const NavLink: React.FC<NavLinkProps> = ({ children, link, active }) => {
         textDecoration: "none",
         bg: active ? activeColor : bgColor,
       }}
-      href={"/" + link.toLowerCase()}
+      href={url}
       // @ts-ignore
       bg={active ? activeColor : null}
     >
