@@ -41,6 +41,9 @@ const NavLink: React.FC<NavLinkProps> = ({ children, link, active }) => {
       href={url}
       // @ts-ignore
       bg={active ? activeColor : null}
+      transitionProperty="colors"
+      transitionDuration="slow"
+      transitionTimingFunction="ease-out"
     >
       {children}
     </Link>
@@ -58,6 +61,9 @@ const NavBar: React.FC<NavBarProps> = ({ active_page }) => {
         bg={useColorModeValue("gray.100", "rgba(19, 23, 32, 0.7)")}
         back
         px={4}
+        transitionProperty="colors"
+        transitionDuration="slow"
+        transitionTimingFunction="ease-out"
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
